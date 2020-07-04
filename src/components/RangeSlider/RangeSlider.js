@@ -4,14 +4,16 @@ import React, { Component } from 'react'
 import Slider from 'react-rangeslider'
 
 import 'react-rangeslider/lib/index.css'
-import './RangeSlider.css'
+// import './RangeSlider.css'
+import './Range.css'
 
 class RangeSlider extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
       value: 3,
-      value2: 3,
+      value2: 5,
+      className: 'slider2'
     }
   }
 
@@ -20,15 +22,32 @@ class RangeSlider extends Component {
   }
 
   handleChange = value => {
+    console.log(value)
     this.setState({
       value: value
     })
   }
 
-  handleChange2 = value => {
+  handleChange2 = event => {
+    console.log(event.target.value)
     this.setState({
-      value2: value
+      value2: event.target.value
     })
+    console.log(this.state)
+
+    var x = event.target.value
+
+    if (x <= 3) {
+      this.setState({
+        className: 'slider2',
+        value2: event.target.value
+      })
+    } else if (x > 3) {
+      this.setState({
+        className: 'test',
+        value2: event.target.value
+      })
+    }
   }
 
   handleChangeComplete = () => {
@@ -47,10 +66,8 @@ class RangeSlider extends Component {
     width={30}
   />
 
-  // formatkg = value => value + ' kg'
-
   render () {
-    const { value } = this.state
+    const { value, value2 } = this.state
     return (
       <div className='slider-horizontal'>
         <Slider
@@ -72,9 +89,11 @@ class RangeSlider extends Component {
           onChange={this.handleChange2}
           min={1}
           max={5}
-          value2={5}
-          className="slider2"
+          value2={value2}
+          className={this.state.className}
           id="myRange"
+          onChangeStart={this.handleChangeStart}
+          onChangeComplete={this.handleChangeComplete}
         />
       </div>
       </div>
