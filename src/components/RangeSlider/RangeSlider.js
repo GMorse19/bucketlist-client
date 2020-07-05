@@ -17,6 +17,14 @@ class RangeSlider extends Component {
     }
   }
 
+  smileyOne =
+    <img
+      src= 'smiley2'
+      alt='smiley-one'
+      width='30px'
+      height='30px'
+    />
+
   handleChangeStart = () => {
     console.log('Change event started')
   }
@@ -35,17 +43,19 @@ class RangeSlider extends Component {
     })
     console.log(this.state)
 
-    var x = event.target.value
+    const x = event.target.value
 
-    if (x <= 3) {
+    if (x === '3') {
       this.setState({
-        className: 'slider2',
-        value2: event.target.value
+        className: 'slider2'
       })
-    } else if (x > 3) {
+    } else if (x === '4') {
       this.setState({
-        className: 'test',
-        value2: event.target.value
+        className: 'smiley-1'
+      })
+    } else if (x === '2') {
+      this.setState({
+        className: 'smiley-1'
       })
     }
   }

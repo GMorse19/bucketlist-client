@@ -26,11 +26,13 @@ input[type=range]::-webkit-slider-thumb {
   height: 24px;
   border: 0;
   background-image: url('smiley2.jpg');
+  background-size: 20px;
   cursor: pointer;
 }
 
-input[type=range].test::-webkit-slider-thumb {
+input[type=range].smiley-1::-webkit-slider-thumb {
   background-image: url('smiley2.png');
+  background-size: 20px;
 }
 
 
