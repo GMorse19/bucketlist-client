@@ -5,15 +5,15 @@ import Slider from 'react-rangeslider'
 
 import 'react-rangeslider/lib/index.css'
 // import './RangeSlider.css'
-import './Range.css'
+import './Range.scss'
 
 class RangeSlider extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
       value: 3,
-      value2: 5,
-      className: 'slider2'
+      value2: 3,
+      className: 'smiley-3'
     }
   }
 
@@ -35,17 +35,27 @@ class RangeSlider extends Component {
     })
     console.log(this.state)
 
-    var x = event.target.value
+    const x = event.target.value
 
-    if (x <= 3) {
+    if (x === '1') {
       this.setState({
-        className: 'slider2',
-        value2: event.target.value
+        className: 'smiley-1'
       })
-    } else if (x > 3) {
+    } else if (x === '2') {
       this.setState({
-        className: 'test',
-        value2: event.target.value
+        className: 'smiley-2'
+      })
+    } else if (x === '3') {
+      this.setState({
+        className: 'smiley-3'
+      })
+    } else if (x === '4') {
+      this.setState({
+        className: 'smiley-4'
+      })
+    } else if (x === '5') {
+      this.setState({
+        className: 'smiley-5'
       })
     }
   }
@@ -67,7 +77,7 @@ class RangeSlider extends Component {
   />
 
   render () {
-    const { value, value2 } = this.state
+    const { value } = this.state
     return (
       <div className='slider-horizontal'>
         <Slider
@@ -75,25 +85,21 @@ class RangeSlider extends Component {
           max={5}
           labels={this.horizontalLabels}
           value={value}
-          handleLabel={this.smiley}
           onChangeStart={this.handleChangeStart}
           onChange={this.handleChange}
           onChangeComplete={this.handleChangeComplete}
         />
         <br />
         <br />
-      <div class="slidecontainer">
-      {this.smiley}
+      <div className="slidecontainer">
         <input
           type="range"
           onChange={this.handleChange2}
           min={1}
           max={5}
-          value2={value2}
+          value={this.state.value2}
           className={this.state.className}
           id="myRange"
-          onChangeStart={this.handleChangeStart}
-          onChangeComplete={this.handleChangeComplete}
         />
       </div>
       </div>
